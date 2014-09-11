@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<reference anchor='RFC2141'>
+
+<front>
+<title>URN Syntax</title>
+<author initials='R.' surname='Moats' fullname='Ryan Moats'>
+<organization>AT&amp;T</organization>
+<address>
+<postal>
+<street>15621 Drexel Circle</street>
+<street>Omaha</street>
+<street>NE 68135-2358</street>
+<country>USA</country></postal>
+<phone>+1 402 894-9456</phone>
+<email>jayhawk@ds.internic.net</email></address></author>
+<date year='1997' month='May' />
+<area>Applications</area>
+<keyword>URN</keyword>
+<keyword>uniform resource</keyword>
+<abstract>
+<t>
+   Uniform Resource Names (URNs) are intended to serve as persistent,
+   location-independent, resource identifiers. This document sets
+   forward the canonical syntax for URNs.  A discussion of both existing
+   legacy and new namespaces and requirements for URN presentation and
+   transmission are presented.  Finally, there is a discussion of URN
+   equivalence and how to determine it.
+</t></abstract></front>
+
+<seriesInfo name='RFC' value='2141' />
+<format type='TXT' octets='14077' target='http://www.rfc-editor.org/rfc/rfc2141.txt' />
+<format type='XML' octets='17687' target='http://xml.resource.org/public/rfc/xml/rfc2141.xml' />
+</reference>

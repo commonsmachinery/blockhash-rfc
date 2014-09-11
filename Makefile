@@ -17,9 +17,16 @@ clean:
 $(name).txt: template.xml $(sections:%=$(destdir)/%.xml)
 	$(XML2RFC) template.xml -f $@ --text
 
-$(destdir)/%.xml: %.md
-	@mkdir -p $(destdir)
-	$(PANDOC) -t docbook -s $^ | xsltproc --nonet transform.xsl - > $@
+$(destdir)/%.xml: $(destdir)/%.docbook.xml
+	xsltproc --nonet transform.xsl $^ > $@
 
+$(destdir)/%.docbook.xml: %.md
+	@mkdir -p $(destdir)
+	$(PANDOC) -t docbook -s $^ > $@
+
+
+# Keep the intermediary files to help with formatting errors
+.SECONDARY: $(sections:%=$(destdir)/%.docbook.xml)
 
 .PHONY: all clean
+

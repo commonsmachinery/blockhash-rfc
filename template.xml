@@ -5,6 +5,8 @@
 <!ENTITY pandocAppendices PUBLIC '' 'build/appendices.xml'>
 
 <!ENTITY pandocRef2119  PUBLIC '' 'bib/reference.RFC.2119.xml'>
+<!ENTITY pandocRef2141  PUBLIC '' 'bib/reference.RFC.2141.xml'>
+<!ENTITY pandocRef5234  PUBLIC '' 'bib/reference.RFC.5234.xml'>
 ]>
 
 <rfc ipr="trust200902"
@@ -55,7 +57,13 @@
 <back>
     <references title="Normative References">
         &pandocRef2119;
+        &pandocRef2141;
+        &pandocRef5234;
     </references>
+<!-- TODO: reference to blockhash paper
+    <references title="Informative References">
+    </references>
+    -->
     &pandocAppendices;
 </back>
 </rfc>
