@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<!DOCTYPE rfc SYSTEM 'rfc2629.dtd' [
+<!ENTITY pandocAbstract PUBLIC '' 'build/abstract.xml'>
+<!ENTITY pandocMain PUBLIC '' 'build/main.xml'>
+<!ENTITY pandocAppendices PUBLIC '' 'build/appendices.xml'>
+
+<!ENTITY pandocRef2119  PUBLIC '' 'bib/reference.RFC.2119.xml'>
+]>
+
+<rfc ipr="trust200902"
+     category="exp"
+     docName="draft-commonsmachinery-urn-blockhash-00">
+ <front>
+        <title abbrev="Blockhash URN">The blockhash perceptual image URN scheme</title>
+
+        <author initials="P." surname="Liljenberg"
+                fullname="Peter Liljenberg">
+            <organization>Commons Machinery</organization>
+
+            <address>
+                <postal>
+                    <street>Åsgatan 5</street>
+                    <street></street>
+                    <city>Gnesta</city> <region></region>
+                    <code>64632</code>
+                    <country>SE</country>
+                </postal>
+
+                <phone></phone>
+                <email>dev@commonsmachinery.se</email>
+                <uri>http://commonsmachinery.se/</uri>
+            </address>
+        </author>
+
+        <date month="September" year="2014"/>
+
+        <area>General</area>
+        <workgroup>RFC Beautification Working Group</workgroup>
+        <keyword>RFC</keyword>
+        <keyword>Request for Comments</keyword>
+        <keyword>I-D</keyword>
+        <keyword>Internet-Draft</keyword>
+        <keyword>XML</keyword>
+        <keyword>Pandoc</keyword>
+        <keyword>Extensible Markup Language</keyword>
+        <abstract>
+          &pandocAbstract;
+        </abstract>
+</front>
+
+<middle>
+&pandocMain;
+</middle>
+
+<back>
+    <references title="Normative References">
+        &pandocRef2119;
+    </references>
+    &pandocAppendices;
+</back>
+</rfc>
