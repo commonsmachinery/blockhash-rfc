@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reference anchor="BLOCKHASH">
+  <front>
+    <title>Block Mean Value Based Image Perceptual Hashing</title>
+    
+    <author initials="B" surname="Yang" fullname="Bian Yang">
+      <organization>School of Computer Science and Technology, Harbin
+      Institute of Technology, China</organization>
+    </author>
+
+    <author initials="F" surname="Gu" fullname="Fan Gu">
+      <organization>Center for Coastal and Ocean Mapping, University
+      of New Hampsire, U.S.A.</organization>
+    </author>
+
+    <author initials="X" surname="Niu" fullname="Xiamu Niu">
+      <organization>School of Computer Science and Technology, Harbin
+      Institute of Technology, China; Shenzhen Graduate School, Harbin
+      Institute of Technology, Shenzhen, China</organization>
+    </author>
+
+    <date month="December" year="2006"/>
+  </front>
+</reference>

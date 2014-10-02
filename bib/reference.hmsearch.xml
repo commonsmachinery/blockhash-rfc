@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reference anchor="HMSEARCH">
+  <front>
+    <title>HmSearch: an efficient hamming distance query processing algorithm</title>
+    
+    <author initials="X" surname="Zhang" fullname="Xiaoyang Zhang">
+      <organization>University of New South Wales, Australia</organization>
+    </author>
+
+    <author initials="J" surname="Qin" fullname="Jianbin Qin">
+      <organization>University of New South Wales, Australia</organization>
+    </author>
+
+    <author initials="W" surname="Wang" fullname="Wei Wang">
+      <organization>University of New South Wales, Australia</organization>
+    </author>
+
+    <author initials="Y" surname="Sun" fullname="Yifang Sun">
+      <organization>University of New South Wales, Australia</organization>
+    </author>
+
+    <author initials="J" surname="Lu" fullname="Jiaheng Lu">
+      <organization>Renmin University of China, China</organization>
+    </author>
+
+    <date day="29" month="July" year="2013"/>
+  </front>
+</reference>

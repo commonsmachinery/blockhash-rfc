@@ -10,7 +10,39 @@ in RFCs to Indicate Requirement Levels" [](#RFC2119).
 Introduction
 ============
 
-TODO
+Most URN namespaces are intended to identify a unique resource
+[](#RFC1630), e.g. by a unique ID that is assigned by a registry, or
+from a cryptographic hash derived from the resource itself.
+
+The blockhash URN namespace specified in this document instead
+identifies a unique likeness of a resource, specifically of an image.
+It is intended to be used in situations where an exact match may not
+be possible, e.g. when comparing two instances of an image that might
+have been resized or recoded in different file formats.
+
+This is achieved by using a perceptual hash based on the blockhash
+algorithm [](#BLOCKHASH).  A small change in an image also results in
+a correspondingly small change in the blockhash.  This is in contrast
+to a cryptographic hash where even small changes to a file result in
+unpredictable and often large changes in the hash.
+
+This allows not only the exact comparison of two blockhashes, but also
+makes it possible to determine how similar two images are.  The
+similary is measured as the hamming distance, i.e. the number of bits
+in the two hashes that are different.  Tools using blockhashes can
+then choose a maximum hamming distance that is relevant for the
+particular use case and the precision needed.  Efficient algorithms
+exist to query a set of hashes to find the ones within a given
+distance from a particular hash, e.g. HmSearch [](#HMSEARCH).
+
+The primary use case for blockhashes is to implement services that can
+perform a reverse image lookup, i.e. based on the image itself find
+out information about it or find similar images.
+
+This namespace specification is for a formal namespace.  The
+specification adheres to the guidelines given in "Uniform Resource
+Names (URN) Namespace Definition Mechanisms" [](#RFC3406).
+
 
 Specification Template
 ======================
@@ -67,13 +99,20 @@ bits long unless there is a specific need for a different size.
 
 None as yet.
 
+
 ## Identifier uniqueness considerations
 
-TODO: discuss images as abstract entities.
+A blockhash URN identifies the unique likeness of an image, rather
+than a specific image file.  Within the blockhash scheme, all images
+that produce the same blockhash are considered identicial.
+
 
 ## Identifier persistence considerations
 
-TODO: refer to the abstract identification
+The algorithm that calculate a blockhash from an image also establish
+a persistent identifier.  The process can later be repeated on the
+to reproduce the identifier at any point in the lifetime of the image.
+
 
 ## Process of identifier assignment
 
@@ -127,24 +166,33 @@ results, but SHOULD make users aware if the modified process can
 introduce differences to the standard algorithm which may result in
 false negatives.  One possible alternative to the algorithm described
 above is to resize the image to ensure that each block holds an even
-number of pixels to avoid the calculations in 4a and 4d.
+number of pixels to avoid the calculations in 4a and 4c.
 
 
 ## Process of identifier resolution
 
-TODO: discuss hamming distances
+Not specified.
+
 
 ## Rules for lexical equivalence
 
-TODO: case-insensitive comparison
+Lexical equivalence of two blockhash identifiers are determined by
+first converting both hexadecimal strings to lower-case or upper-case,
+and then comparing the resulting strings.
+
+Alternatively, the hashes can be converted to byte sequences, which
+are then compared.
+
 
 ## Conformance with URN syntax
 
 No special considerations.
 
+
 ## Validation mechanism
 
 None specified.
+
 
 ## Scope
 
@@ -161,17 +209,88 @@ entered into the IANA registry for URN NIDs.
 Namespace Considerations
 ========================
 
-TODO: rationale
+A new URN namespaces is needed as there are no existing namespaces for
+representing perceptual hashes as URNs in general, and none
+specifically for the blockhash algorithm.
+
+[](#I-D.thiemann-hash-urn) proposes a namespace for cryptographic hashes,
+but it is intentionally limited to only allow the hash algorithms
+specified in the internet draft.
+
+In a similar vein this namespace limited to blockhash itself, to avoid
+having to establish a secondary level of namespace assignments for
+different perceptual hash algorithms.
+
+The blockhash algorithm was choosen to allow even relatively
+restricted environments (e.g. javascript code in a web browser) to
+produce an image hash, that is still sufficiently precise for
+identifying images as they are shared across the Internet, even after
+resizes, recodings and smaller edits.  More complex perceptual hashes
+exist that can track more complex changes, e.g. large crops or
+rotations, but also put higher requirements on the implementation.
+
+Representing the hash as a hexadecimal string rather than as a more
+compact base32 is choosen to align the format more closely with the
+underlying bit structure.  This allow code to determine a rough
+hamming distance between two blockhashes just by comparing the
+hexadecimal strings, rather than first having to convert them into
+binary sequences.
+
+The restriction that the grid width and height must be the same allow
+some scope to implementations to choose a reasonable hash size while
+ensuring that the hash size can always be reconstructed from the hash
+length.  Requiring that the grid width and height must be a multiple
+of 4 ensures that the hash size is a multiple of eight, and thus will
+fill up a sequence of bytes exactly.
 
 
 Community Considerations
 ========================
 
-TODO: related work.
+Internet services today make it very simple to share an image, but
+most loses the context of the original image in the process.  The
+context is where and when the image was created or a photo taken, by
+whom, and what the conditions are for properly sharing the image.  It
+is needed both to avoid copyright infringements, and to give credit to
+the original creator.
+
+There already exist several reverse image search services, but they
+are generally proprietary, closed implementations, and require users
+to upload the image to the service, potentially violating the user's
+privacy.
+
+Having a standardised way to refer to a perceptual hash of an image
+will provide new capabilities directly to Internet users to find out
+the context of images, even when they have passed through several
+steps of sharing.
+
+The blockhash on its own is not sufficient, but it will enable new
+services that can index large collections of images.  Client-side
+tools can then calculate a blockhash and query these indices to find
+more information about the image, preserving the user privacy.
+
+The scope of this document does not cover processes for finding and
+querying such indices, but enable such future work to build on
+blockhash URNs.
 
 
 Security Considerations
 =======================
 
-TODO: none?
+Blockhashes are generally only useful when they relate to images that
+are already public and being shared.  As such, producing a blockhash
+of the image and sharing that will not change the security or privacy
+situation significantly.
 
+For all images that are a few times larger than the grid size, it will
+be practically impossible to reconstruct the original image based on
+its blockhash.  Thus sharing a blockhash of a private image does not
+infringe on the user's privacy directly.  However, if the image is
+later shared, the previously shared blockhash can be used to infer
+that the user had access of the image at the earlier time.
+
+Images that are not much bigger than the grid size could be reproduced
+in sufficient detail to be identified from a blockhash.  Such images
+are usually icons and other non-sensitive content, but implementation
+can also mitigate against this by requiring the user to confirm that
+such a small image should be hashed.

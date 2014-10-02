@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reference anchor="RFC1630">
+
+<front>
+<title abbrev="URIs in WWW">Universal Resource Identifiers in WWW: A Unifying Syntax for the Expression of Names and Addresses of Objects on the Network as used in the World-Wide Web</title>
+<author initials="T." surname="Berners-Lee" fullname="Tim Berners-Lee">
+<organization>CERN, World-Wide Web project</organization>
+<address>
+<postal>
+<street>1211 Geneva 23</street>
+<city/>
+<region/>
+<code/>
+<country>CH</country></postal>
+<phone>+41 22 7673755</phone>
+<facsimile>+41 22 7677155</facsimile>
+<email>timbl@info.cern.ch</email></address></author>
+<date year="1994" month="June"/></front>
+
+<seriesInfo name="RFC" value="1630"/>
+<format type="TXT" octets="57601" target="http://www.rfc-editor.org/rfc/rfc1630.txt"/>
+</reference>

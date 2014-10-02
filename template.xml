@@ -4,9 +4,14 @@
 <!ENTITY pandocMain PUBLIC '' 'build/main.xml'>
 <!ENTITY pandocAppendices PUBLIC '' 'build/appendices.xml'>
 
+<!ENTITY pandocRef1630  PUBLIC '' 'bib/reference.RFC.1630.xml'>
 <!ENTITY pandocRef2119  PUBLIC '' 'bib/reference.RFC.2119.xml'>
 <!ENTITY pandocRef2141  PUBLIC '' 'bib/reference.RFC.2141.xml'>
+<!ENTITY pandocRef3406  PUBLIC '' 'bib/reference.RFC.3406.xml'>
 <!ENTITY pandocRef5234  PUBLIC '' 'bib/reference.RFC.5234.xml'>
+<!ENTITY pandocRefBLOCKHASH  PUBLIC '' 'bib/reference.blockhash.xml'>
+<!ENTITY pandocRefHMSEARCH  PUBLIC '' 'bib/reference.hmsearch.xml'>
+<!ENTITY pandocRefTHIEMANN-HASH-URN  PUBLIC '' 'bib/reference.I-D.thiemann-hash-urn.xml'>
 ]>
 
 <rfc ipr="trust200902"
@@ -34,17 +39,12 @@
             </address>
         </author>
 
-        <date month="September" year="2014"/>
+        <date month="October" year="2014"/>
 
         <area>General</area>
-        <workgroup>RFC Beautification Working Group</workgroup>
-        <keyword>RFC</keyword>
-        <keyword>Request for Comments</keyword>
-        <keyword>I-D</keyword>
-        <keyword>Internet-Draft</keyword>
-        <keyword>XML</keyword>
-        <keyword>Pandoc</keyword>
-        <keyword>Extensible Markup Language</keyword>
+        <keyword>Reverse image search</keyword>
+        <keyword>Perceptual hash</keyword>
+        <keyword>URN</keyword>
         <abstract>
           &pandocAbstract;
         </abstract>
@@ -58,12 +58,15 @@
     <references title="Normative References">
         &pandocRef2119;
         &pandocRef2141;
+        &pandocRef3406;
         &pandocRef5234;
     </references>
-<!-- TODO: reference to blockhash paper
     <references title="Informative References">
+        &pandocRef1630;
+        &pandocRefBLOCKHASH;
+        &pandocRefHMSEARCH;
+        &pandocRefTHIEMANN-HASH-URN;
     </references>
-    -->
     &pandocAppendices;
 </back>
 </rfc>
