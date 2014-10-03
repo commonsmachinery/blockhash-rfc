@@ -180,8 +180,8 @@ Lexical equivalence of two blockhash identifiers are determined by
 first converting both hexadecimal strings to lower-case or upper-case,
 and then comparing the resulting strings.
 
-Alternatively, the hashes can be converted to byte sequences, which
-are then compared.
+Alternatively, the hexadecimal strings can be converted to byte or bit
+sequences, which are then compared directly.
 
 
 ## Conformance with URN syntax
@@ -225,9 +225,14 @@ The blockhash algorithm was choosen to allow even relatively
 restricted environments (e.g. javascript code in a web browser) to
 produce an image hash, that is still sufficiently precise for
 identifying images as they are shared across the Internet, even after
-resizes, recodings and smaller edits.  More complex perceptual hashes
-exist that can track more complex changes, e.g. large crops or
-rotations, but also put higher requirements on the implementation.
+resizes, recodings and smaller edits.
+
+More complex perceptual hashes exist that can track more complex
+changes, e.g. large crops or rotations, but they also put higher
+requirements on the implementation.  Such larger changes would often
+mean that the edit is no longer the same image but a derivate work.
+Blockhash is intended to only match images that can be considered the
+same work, so not matching derivatives is actually a benefit.
 
 Representing the hash as a hexadecimal string rather than as a more
 compact base32 is choosen to align the format more closely with the

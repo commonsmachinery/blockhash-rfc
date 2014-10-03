@@ -4,8 +4,8 @@
 
 Network Working Group                                      P. Liljenberg
 Internet-Draft                                         Commons Machinery
-Intended status: Experimental                            October 2, 2014
-Expires: April 5, 2015
+Intended status: Experimental                            October 3, 2014
+Expires: April 6, 2015
 
 
                The blockhash perceptual image URN scheme
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 5, 2015.
+   This Internet-Draft will expire on April 6, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Liljenberg                Expires April 5, 2015                 [Page 1]
+Liljenberg                Expires April 6, 2015                 [Page 1]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -109,7 +109,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 5, 2015                 [Page 2]
+Liljenberg                Expires April 6, 2015                 [Page 2]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 5, 2015                 [Page 3]
+Liljenberg                Expires April 6, 2015                 [Page 3]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -221,7 +221,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 5, 2015                 [Page 4]
+Liljenberg                Expires April 6, 2015                 [Page 4]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -251,8 +251,8 @@ Internet-Draft                Blockhash URN                 October 2014
    first converting both hexadecimal strings to lower-case or upper-
    case, and then comparing the resulting strings.
 
-   Alternatively, the hashes can be converted to byte sequences, which
-   are then compared.
+   Alternatively, the hexadecimal strings can be converted to byte or
+   bit sequences, which are then compared directly.
 
 3.11.  Conformance with URN syntax
 
@@ -277,7 +277,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 5, 2015                 [Page 5]
+Liljenberg                Expires April 6, 2015                 [Page 5]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -298,9 +298,14 @@ Internet-Draft                Blockhash URN                 October 2014
    restricted environments (e.g. javascript code in a web browser) to
    produce an image hash, that is still sufficiently precise for
    identifying images as they are shared across the Internet, even after
-   resizes, recodings and smaller edits.  More complex perceptual hashes
-   exist that can track more complex changes, e.g. large crops or
-   rotations, but also put higher requirements on the implementation.
+   resizes, recodings and smaller edits.
+
+   More complex perceptual hashes exist that can track more complex
+   changes, e.g. large crops or rotations, but they also put higher
+   requirements on the implementation.  Such larger changes would often
+   mean that the edit is no longer the same image but a derivate work.
+   Blockhash is intended to only match images that can be considered the
+   same work, so not matching derivatives is actually a benefit.
 
    Representing the hash as a hexadecimal string rather than as a more
    compact base32 is choosen to align the format more closely with the
@@ -325,18 +330,18 @@ Internet-Draft                Blockhash URN                 October 2014
    is needed both to avoid copyright infringements, and to give credit
    to the original creator.
 
+
+
+
+Liljenberg                Expires April 6, 2015                 [Page 6]
+
+Internet-Draft                Blockhash URN                 October 2014
+
+
    There already exist several reverse image search services, but they
    are generally proprietary, closed implementations, and require users
    to upload the image to the service, potentially violating the user's
    privacy.
-
-
-
-
-Liljenberg                Expires April 5, 2015                 [Page 6]
-
-Internet-Draft                Blockhash URN                 October 2014
-
 
    Having a standardised way to refer to a perceptual hash of an image
    will provide new capabilities directly to Internet users to find out
@@ -381,18 +386,17 @@ Internet-Draft                Blockhash URN                 October 2014
 
    [RFC2141]  Moats, R., "URN Syntax", RFC 2141, May 1997.
 
-   [RFC3406]  Daigle, L., van Gulik, D., Iannella, R., and P. Faltstrom,
-              "Uniform Resource Names (URN) Namespace Definition
-              Mechanisms", BCP 66, RFC 3406, October 2002.
 
 
 
-
-
-Liljenberg                Expires April 5, 2015                 [Page 7]
+Liljenberg                Expires April 6, 2015                 [Page 7]
 
 Internet-Draft                Blockhash URN                 October 2014
 
+
+   [RFC3406]  Daigle, L., van Gulik, D., Iannella, R., and P. Faltstrom,
+              "Uniform Resource Names (URN) Namespace Definition
+              Mechanisms", BCP 66, RFC 3406, October 2002.
 
    [RFC5234]  Crocker, D. and P. Overell, "Augmented BNF for Syntax
               Specifications: ABNF", STD 68, RFC 5234, January 2008.
@@ -434,6 +438,18 @@ Appendix A.  Experimental results
 
 Author's Address
 
+
+
+
+
+
+
+
+Liljenberg                Expires April 6, 2015                 [Page 8]
+
+Internet-Draft                Blockhash URN                 October 2014
+
+
    Peter Liljenberg
    Commons Machinery
    Aesgatan 5
@@ -445,4 +461,44 @@ Author's Address
 
 
 
-Liljenberg                Expires April 5, 2015                 [Page 8]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Liljenberg                Expires April 6, 2015                 [Page 9]
