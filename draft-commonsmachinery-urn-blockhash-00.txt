@@ -4,8 +4,8 @@
 
 Network Working Group                                      P. Liljenberg
 Internet-Draft                                         Commons Machinery
-Intended status: Experimental                            October 3, 2014
-Expires: April 6, 2015
+Intended status: Experimental                           October 20, 2014
+Expires: April 23, 2015
 
 
                The blockhash perceptual image URN scheme
@@ -36,7 +36,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 6, 2015.
+   This Internet-Draft will expire on April 23, 2015.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 1]
+Liljenberg               Expires April 23, 2015                 [Page 1]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -109,7 +109,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 2]
+Liljenberg               Expires April 23, 2015                 [Page 2]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -165,7 +165,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 3]
+Liljenberg               Expires April 23, 2015                 [Page 3]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -182,9 +182,10 @@ Internet-Draft                Blockhash URN                 October 2014
 
 3.8.  Process of identifier assignment
 
-   A blockhash identifier is calculated from a digital image, and
-   require no more than access to the file or a file that has already
-   been decoded into RGB pixels.
+   A blockhash identifier is calculated from a digital image, and only
+   depend on access to the pixel representation of the image.  It can be
+   read from a local or remote file, from an in-memory pixmap or canvas,
+   or another suitable source.
 
    A blockhash SHOULD be calculated following these steps:
 
@@ -220,8 +221,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-
-Liljenberg                Expires April 6, 2015                 [Page 4]
+Liljenberg               Expires April 23, 2015                 [Page 4]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -277,7 +277,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 5]
+Liljenberg               Expires April 23, 2015                 [Page 5]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -333,7 +333,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 6]
+Liljenberg               Expires April 23, 2015                 [Page 6]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -389,7 +389,7 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 7]
+Liljenberg               Expires April 23, 2015                 [Page 7]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -445,7 +445,7 @@ Author's Address
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 8]
+Liljenberg               Expires April 23, 2015                 [Page 8]
 
 Internet-Draft                Blockhash URN                 October 2014
 
@@ -501,4 +501,4 @@ Internet-Draft                Blockhash URN                 October 2014
 
 
 
-Liljenberg                Expires April 6, 2015                 [Page 9]
+Liljenberg               Expires April 23, 2015                 [Page 9]

@@ -116,9 +116,10 @@ to reproduce the identifier at any point in the lifetime of the image.
 
 ## Process of identifier assignment
 
-A blockhash identifier is calculated from a digital image, and require
-no more than access to the file or a file that has already been
-decoded into RGB pixels.
+A blockhash identifier is calculated from a digital image, and only
+depend on access to the pixel representation of the image.  It can
+be read from a local or remote file, from an in-memory pixmap
+or canvas, or another suitable source.
 
 A blockhash SHOULD be calculated following these steps:
 
