@@ -1,13 +1,39 @@
 # Experimental results
 
-For images in general, the blockhash algorithm generates the same
-blockhash value for two different images in 0,007% (0.7 per 10,000) of
-the cases (data based on a random sampling of 29,649 images).
+On a sample of 100,000 random images from Wikimedia Commons, the
+algorithm generated colliding matches for 1,036 images, meaning that
+it has a collision rate of ca 1%. The vast majority of such collisions
+are where between two to four images generate the same hash; only
+rarely does a hash match more than four images.
 
-For photographs, the algorithm generates practically unique
-blockhashes, but for icons, clipart and other images, the algorithm
-generates less unique blockhashses.
+Number of images in collision  Collisions
+-----------------------------  ----------
+                            2         247
+                            3          51
+                            4          19
+                            5           8
+                            6           9
+                            7           3
+                    8 or more          16
 
-Larger areas of the same color (in particular black) in an image,
-either as a background or borders, result in hashes that collide in
-1,9% (190 per 10,000) of cases.
+^[collisions::Blockhash collisions rate]
+
+Taking 4,000 unique sample images (not counting collisions) and doing
+a crosswise comparison of them, calculating the hamming distance
+between one hash and every other hash, we get the following
+distribution of hamming distances (up to 10 bits):
+
+Hamming distance Cross matches
+---------------- -------------
+               1             0
+               2             2
+               3             2
+               4             7
+               5             7
+               6            25
+               7            30
+               8            47
+               9            55
+              10            73
+
+^[crossmatches::False positive match rate]
