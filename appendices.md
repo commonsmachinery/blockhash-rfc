@@ -23,17 +23,17 @@ a crosswise comparison of them, calculating the hamming distance
 between one hash and every other hash, we get the following
 distribution of hamming distances (up to 10 bits):
 
-Hamming distance Cross matches
----------------- -------------
-               1             0
-               2             2
-               3             2
-               4             7
-               5             7
-               6            25
-               7            30
-               8            47
-               9            55
-              10            73
+Hamming distance Cross matches Cross matches (%)
+---------------- ------------- -----------------
+               1             0 0%
+               2             2 0,05% 
+               3             2 0,05% 
+               4             7 0,175%
+               5             7 0,175%
+               6            25 0,625%
+               7            30 0,75% 
+               8            47 1,175%
+               9            55 1,375%
+              10            73 1,825%
 
 ^[crossmatches::False positive match rate]
