@@ -91,7 +91,7 @@ hexadecimal value, lowercase characters SHOULD be used.
 
 The number of bits encoded in `hexhash` MUST be M, where, M = N * N
 and N is a multiple of 4.  It is not expected that hash lengths other
-than 64, 144 and 256 bits will make sense.  Blockhashes SHOULD be 256
+than 64, 144 and 256 bits will be useful.  Blockhashes SHOULD be 256
 bits long unless there is a specific need for a different size.
 
 
@@ -126,7 +126,8 @@ A blockhash SHOULD be calculated following these steps:
 1. Convert the image to RGB format with an optional alpha channel (if
    not already done).  The standard conversion method of the file
    format SHOULD be used, avoiding any file- or system-specific colour
-   profiles.
+   profiles.  Any orientation tag in the image metadata SHOULD be
+   applied.
 
 2. Construct a grid of N by N blocks covering the image.  N MUST be a
    multiple of 4.
@@ -146,12 +147,15 @@ A blockhash SHOULD be calculated following these steps:
         each of the blocks the pixel covers, in proportion to the area
         of the pixel that is in each block.
 
-5. Determine the median value of all the blocks.
+5. Divide the block grid into four horizontal groups, each containing
+   N columns and N/4 rows.  For each group, determine the median value
+   of all the blocks contained in the group.
 
 6. For each block, starting with the upper left and progressing row by
    row until the lower right, add a bit to the result hash:
 
-    a.  If the block value is less than the median value, add a 0.
+    a.  If the block value is less than the median value of the
+        horizontal group the block belongs to, add a 0.
 
     b.  Otherwise, add a 1.
 
@@ -218,9 +222,9 @@ specifically for the blockhash algorithm.
 but it is intentionally limited to only allow the hash algorithms
 specified in the internet draft.
 
-In a similar vein this namespace limited to blockhash itself, to avoid
-having to establish a secondary level of namespace assignments for
-different perceptual hash algorithms.
+In a similar vein this namespace is limited to blockhash itself, to
+avoid having to establish a secondary level of namespace assignments
+for different perceptual hash algorithms.
 
 The blockhash algorithm was choosen to allow even relatively
 restricted environments (e.g. javascript code in a web browser) to
@@ -248,6 +252,18 @@ ensuring that the hash size can always be reconstructed from the hash
 length.  Requiring that the grid width and height must be a multiple
 of 4 ensures that the hash size is a multiple of eight, and thus will
 fill up a sequence of bytes exactly.
+
+The original blockhash algorithm [](#BLOCKHASH) calculated a single
+median value for the entire block grid.  During testing it was found
+that this often resulted collisions in images with a lot of contrast
+between different parts of the image.  An example is outdoor images of
+landscapes with a bright sky and a darker ground.  An image-wide
+median results in the bright areas mostly being represented by 0 bits
+and the darker with 1 bits, losing a lot of detail that could help
+discern different images with similar contrast structure.  By
+calculating a median value for each of four horizontal groups and
+comparing the block values to the median in the corresponding group
+help retain such contrast and reduce the collision frequency.
 
 
 Community Considerations
