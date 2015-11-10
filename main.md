@@ -151,13 +151,19 @@ A blockhash SHOULD be calculated following these steps:
    N columns and N/4 rows.  For each group, determine the median value
    of all the blocks contained in the group.
 
+5. Let H be the theoretically maximum cumulative value of all pixels
+   in a block divided by two (half the value space).
+
 6. For each block, starting with the upper left and progressing row by
    row until the lower right, add a bit to the result hash:
 
-    a.  If the block value is less than the median value of the
-        horizontal group the block belongs to, add a 0.
+    a.  If the block value is higher than the median value of the
+        horizontal group the block belongs to, add a 1.
 
-    b.  Otherwise, add a 1.
+    b.  If the block value and median have the same value, and the
+        median is above above H, add a 1.
+
+    c.  Otherwise, add a 0.
 
 7. Encode the hash in hexadecimal, interpreting the sequence of bits
    as eight-bit bytes.
