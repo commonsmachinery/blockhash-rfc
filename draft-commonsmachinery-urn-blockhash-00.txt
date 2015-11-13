@@ -240,7 +240,10 @@ Internet-Draft                Blockhash URN                December 2015
            horizontal group the block belongs to, add a 1.
 
        B.  If the block value and median have the same value, and the
-           median is above above H, add a 1.
+           median is above above H, add a 1.  Note that imprecisions
+           from floating point calculations or other implementation
+           details must be taken into consideration when determining if
+           the block value and the median are the same value.
 
        C.  Otherwise, add a 0.
 
@@ -269,9 +272,6 @@ Internet-Draft                Blockhash URN                December 2015
 
    Alternatively, the hexadecimal strings can be converted to byte or
    bit sequences, which are then compared directly.
-
-
-
 
 
 
