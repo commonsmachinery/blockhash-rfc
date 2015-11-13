@@ -4,8 +4,8 @@
 
 Network Working Group                                      P. Liljenberg
 Internet-Draft                                         Commons Machinery
-Intended status: Experimental                           December 1, 2014
-Expires: June 4, 2015
+Intended status: Experimental                              December 2015
+Expires: June 3, 2016
 
 
                The blockhash perceptual image URN scheme
@@ -36,11 +36,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on June 4, 2015.
+   This Internet-Draft will expire on June 3, 2016.
 
 Copyright Notice
 
-   Copyright (c) 2014 IETF Trust and the persons identified as the
+   Copyright (c) 2015 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Liljenberg                Expires June 4, 2015                  [Page 1]
+Liljenberg                Expires June 3, 2016                  [Page 1]
 
-Internet-Draft                Blockhash URN                December 2014
+Internet-Draft                Blockhash URN                December 2015
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -92,7 +92,7 @@ Internet-Draft                Blockhash URN                December 2014
    then choose a maximum hamming distance that is relevant for the
    particular use case and the precision needed.  Efficient algorithms
    exist to query a set of hashes to find the ones within a given
-   distance from a particular hash, e.g. HmSearch [HMSEARCH].
+   distance from a particular hash, e.g.  HmSearch [HMSEARCH].
 
    The primary use case for blockhashes is to implement services that
    can perform a reverse image lookup, i.e. based on the image itself
@@ -102,17 +102,21 @@ Internet-Draft                Blockhash URN                December 2014
    specification adheres to the guidelines given in "Uniform Resource
    Names (URN) Namespace Definition Mechanisms" [RFC3406].
 
+
+
+
+
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 2]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
 3.  Specification Template
 
 3.1.  Namespace ID
-
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 2]
-
-Internet-Draft                Blockhash URN                December 2014
-
 
    "blockhash" requested.
 
@@ -155,20 +159,22 @@ Internet-Draft                Blockhash URN                December 2014
    than 64, 144 and 256 bits will be useful.  Blockhashes SHOULD be 256
    bits long unless there is a specific need for a different size.
 
+
+
+
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 3]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
 3.5.  Relevant ancillary documentation
 
    None as yet.
 
 3.6.  Identifier uniqueness considerations
-
-
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 3]
-
-Internet-Draft                Blockhash URN                December 2014
-
 
    A blockhash URN identifies the unique likeness of an image, rather
    than a specific image file.  Within the blockhash scheme, all images
@@ -213,31 +219,38 @@ Internet-Draft                Blockhash URN                December 2014
            each of the blocks the pixel covers, in proportion to the
            area of the pixel that is in each block.
 
+
+
+Liljenberg                Expires June 3, 2016                  [Page 4]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
    5.  Divide the block grid into four horizontal groups, each
        containing N columns and N/4 rows.  For each group, determine the
        median value of all the blocks contained in the group.
 
+   6.  Let H be the theoretically maximum cumulative value of all pixels
+       in a block divided by two (half the value space).
 
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 4]
-
-Internet-Draft                Blockhash URN                December 2014
-
-
-   6.  For each block, starting with the upper left and progressing row
+   7.  For each block, starting with the upper left and progressing row
        by row until the lower right, add a bit to the result hash:
 
-       A.  If the block value is less than the median value of the
-           horizontal group the block belongs to, add a 0.
+       A.  If the block value is higher than the median value of the
+           horizontal group the block belongs to, add a 1.
 
-       B.  Otherwise, add a 1.
+       B.  If the block value and median have the same value, and the
+           median is above above H, add a 1.  Note that imprecisions
+           from floating point calculations or other implementation
+           details must be taken into consideration when determining if
+           the block value and the median are the same value.
 
-   7.  Encode the hash in hexadecimal, interpreting the sequence of bits
+       C.  Otherwise, add a 0.
+
+   8.  Encode the hash in hexadecimal, interpreting the sequence of bits
        as eight-bit bytes.
 
-   8.  Construct a blockhash URN according to the grammar above using
+   9.  Construct a blockhash URN according to the grammar above using
        the hexadecimal representation of the hash.
 
    Implementations MAY use a different process which yield similar
@@ -260,6 +273,15 @@ Internet-Draft                Blockhash URN                December 2014
    Alternatively, the hexadecimal strings can be converted to byte or
    bit sequences, which are then compared directly.
 
+
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 5]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
 3.11.  Conformance with URN syntax
 
    No special considerations.
@@ -273,14 +295,6 @@ Internet-Draft                Blockhash URN                December 2014
    Global.
 
 4.  IANA Considerations
-
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 5]
-
-Internet-Draft                Blockhash URN                December 2014
-
 
    This document includes a URN namespace registration that is to be
    entered into the IANA registry for URN NIDs.
@@ -316,6 +330,14 @@ Internet-Draft                Blockhash URN                December 2014
    compact base32 is choosen to align the format more closely with the
    underlying bit structure.  This allow code to determine a rough
    hamming distance between two blockhashes just by comparing the
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 6]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
    hexadecimal strings, rather than first having to convert them into
    binary sequences.
 
@@ -330,14 +352,6 @@ Internet-Draft                Blockhash URN                December 2014
    median value for the entire block grid.  During testing it was found
    that this often resulted collisions in images with a lot of contrast
    between different parts of the image.  An example is outdoor images
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 6]
-
-Internet-Draft                Blockhash URN                December 2014
-
-
    of landscapes with a bright sky and a darker ground.  An image-wide
    median results in the bright areas mostly being represented by 0 bits
    and the darker with 1 bits, losing a lot of detail that could help
@@ -370,6 +384,16 @@ Internet-Draft                Blockhash URN                December 2014
    tools can then calculate a blockhash and query these indices to find
    more information about the image, preserving the user privacy.
 
+
+
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 7]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
    The scope of this document does not cover processes for finding and
    querying such indices, but enable such future work to build on
    blockhash URNs.
@@ -380,19 +404,6 @@ Internet-Draft                Blockhash URN                December 2014
    are already public and being shared.  As such, producing a blockhash
    of the image and sharing that will not change the security or privacy
    situation significantly.
-
-
-
-
-
-
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 7]
-
-Internet-Draft                Blockhash URN                December 2014
-
 
    For all images that are a few times larger than the grid size, it
    will be practically impossible to reconstruct the original image
@@ -430,6 +441,15 @@ Internet-Draft                Blockhash URN                December 2014
               of Objects on the Network as used in the World-Wide Web",
               RFC 1630, June 1994.
 
+
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 8]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
    [BLOCKHASH]
               Yang, B., Gu, F., and X. Niu, "Block Mean Value Based
               Image Perceptual Hashing", December 2006.
@@ -440,16 +460,6 @@ Internet-Draft                Blockhash URN                December 2014
               algorithm", July 2013.
 
    [I-D.thiemann-hash-urn]
-
-
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 8]
-
-Internet-Draft                Blockhash URN                December 2014
-
-
               Thiemann, P., "A URN Namespace For Identifiers Based on
               Cryptographic Hashes", draft-thiemann-hash-urn-01 (work in
               progress), September 2003.
@@ -487,6 +497,15 @@ Appendix A.  Experimental results
    between one hash and every other hash, we get the following
    distribution of hamming distances (up to 10 bits):
 
+
+
+
+
+Liljenberg                Expires June 3, 2016                  [Page 9]
+
+Internet-Draft                Blockhash URN                December 2015
+
+
         +-------------------+----------------+--------------------+
         | Hamming distance  | Cross matches  | Cross matches (%)  |
         +-------------------+----------------+--------------------+
@@ -498,14 +517,6 @@ Appendix A.  Experimental results
         |                   |                |                    |
         | 4                 | 7              | 0,175%             |
         |                   |                |                    |
-
-
-
-Liljenberg                Expires June 4, 2015                  [Page 9]
-
-Internet-Draft                Blockhash URN                December 2014
-
-
         | 5                 | 7              | 0,175%             |
         |                   |                |                    |
         | 6                 | 25             | 0,625%             |
@@ -546,15 +557,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Liljenberg                Expires June 4, 2015                 [Page 10]
+Liljenberg                Expires June 3, 2016                 [Page 10]
