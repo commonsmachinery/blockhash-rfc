@@ -161,7 +161,10 @@ A blockhash SHOULD be calculated following these steps:
         horizontal group the block belongs to, add a 1.
 
     b.  If the block value and median have the same value, and the
-        median is above above H, add a 1.
+        median is above above H, add a 1. Note that imprecisions from
+        floating point calculations or other implementation details
+        must be taken into consideration when determining if the block
+        value and the median are the same value.
 
     c.  Otherwise, add a 0.
 
