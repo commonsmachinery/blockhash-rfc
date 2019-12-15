@@ -24,7 +24,7 @@ http://xml2rfc.ietf.org/
 Guidelines for internet drafts:
 http://www.ietf.org/ietf-ftp/1id-guidelines.html
 
-URN namespace definition metchanism, which this will have to comply
+URN namespace definition mechanism, which this will have to comply
 with:
 http://tools.ietf.org/html/rfc3406
 
